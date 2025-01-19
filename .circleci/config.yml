@@ -1,15 +1,12 @@
 version: 2.1
-
 jobs:
-  hello-world:
+  build:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/base:current
+    resource_class: tech-life-hacking/test
     steps:
-      - run:
-          name: Hello
-          command: echo "Hello, CircleCI!"
-
+      - run: echo "Hi I'm on a Container Runner!"
 workflows:
-  main:
+  build-workflow:
     jobs:
-      - hello-world
+      - build
