@@ -1,0 +1,33 @@
+name: Build on Raspberry Pi
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # 'runs-on' でSelf-Hosted Runnerを指定
+    runs-on: [ self-hosted, arm64, raspi ]
+    # ↑ 'self-hosted' タグは必須。
+    # さらにさっき設定したラベル "arm64, raspi" と合わせると
+    # そのRunnerのみがジョブを受け付けます
+
+    steps:
+      - uses: actions/checkout@v3  # コードをチェックアウト
+      - name: Show system info
+        run: uname -a
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake
+      - name: Build
+        run: |
+          mkdir -p build && cd build
+          cmake ..
+          make -j4
+      - name: Test
+        run: |
+          cd build
+          ./my_test_binary
