@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: cimg/base:current
-    resource_class: tech-life-hacking/test
+    resource_class: tech-life-hacking/yuu-desktop
     steps:
       - run: echo "Hi I'm on a Container Runner!"
 workflows:
