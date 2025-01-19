@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     # 'runs-on' でSelf-Hosted Runnerを指定
-    runs-on: [ self-hosted, arm64, raspi ]
+    runs-on:[ self-hosted, Linux, ARM64 ]
     # ↑ 'self-hosted' タグは必須。
     # さらにさっき設定したラベル "arm64, raspi" と合わせると
     # そのRunnerのみがジョブを受け付けます
