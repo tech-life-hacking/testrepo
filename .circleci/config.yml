@@ -1,12 +1,13 @@
-version: 2.1
+name: Build on Self-Hosted Runner
+
+on:
+  push:
+    branches: [ "main" ]
+
 jobs:
   build:
-    docker:
-      - image: cimg/base:current
-    resource_class: tech-life-hacking/yuu-desktop
+    runs-on: [ self-hosted, arm64 ]
     steps:
-      - run: echo "Hi I'm on a Container Runner!"
-workflows:
-  build-workflow:
-    jobs:
-      - build
+      - uses: actions/checkout@v3
+      - name: Print info
+        run: uname -a
