@@ -1,0 +1,15 @@
+version: 2.1
+
+jobs:
+  hello-world:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run:
+          name: Hello
+          command: echo "Hello, CircleCI!"
+
+workflows:
+  main:
+    jobs:
+      - hello-world
