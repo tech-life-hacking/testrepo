@@ -22,4 +22,6 @@ jobs:
 
       - name: Run firmware updater
         run: |
-          python3 updater.py --bin firmware/*.bin --device /dev/ttyAMA0 --baudrate 115200
+          BIN_FILE=$(ls firmware/*.bin | head -n 1)
+          echo "Using firmware: $BIN_FILE"
+          python3 updater.py --bin "$BIN_FILE" --device /dev/ttyAMA0 --baudrate 115200
