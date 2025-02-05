@@ -22,4 +22,4 @@ jobs:
 
       - name: Run firmware updater
         run: |
-          python3 ~/updater.py --bin firmware/*.bin --device /dev/ttyAMA0 --baudrate 115200
+          python3 updater.py --bin firmware/*.bin --device /dev/ttyAMA0 --baudrate 115200
